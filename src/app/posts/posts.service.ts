@@ -3,8 +3,7 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Post } from './post.model';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { Title } from '@angular/platform-browser';
+
 
 @Injectable({providedIn: 'root'})
 export class PostsService {
@@ -37,15 +36,12 @@ export class PostsService {
   }
 
   getPost(id: string){
-    return {...this.posts.find(p=>p.id==id)}
+    return this.http.get<{_id: string, title: string, content:string}>("http://localhost:3000/api/posts/" + id);
   }
 
   addPost(title: string, content: string) {
     const post: Post = {
-      id: null, title: title, content: content,
-      subscribe: function (arg0: {}) {
-        throw new Error('Function not implemented.');
-      }
+      id: null, title: title, content: content      
     };
     this.http
     .post<{message: string}>('http://localhost:3000/api/posts', post)
@@ -59,15 +55,18 @@ export class PostsService {
 
   updatePost(id: string, title: string, content: string ){
     const post: Post = {
-      id: 'id',
-      title: 'title',
-      content: 'content',
-      subscribe: function (arg0: {}) {
-        throw new Error('Function not implemented.');
-      } 
-    }
+      id: id,
+      title: title,
+      content: content      
+    };
     this.http.put("http://localhost:3000/api/posts/" + id, post)
-    .subscribe(response=>console.log(response));
+    .subscribe(response=>{
+      const updatePosts = [...this.posts];
+      const oldPostIndex = updatePosts.findIndex(p=>p.id===post.id);
+      updatePosts[oldPostIndex] = post;
+      this.posts = updatePosts;
+      this.postsUpdated.next([...this.posts]);
+    });
   }
 
   deletePost(postId:string): void{
