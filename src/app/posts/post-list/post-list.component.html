@@ -1,4 +1,4 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
@@ -7,6 +7,7 @@
     <div class="post-image">
       <img [src]="post.imagePath" [alt]="post.title">
     </div>
+    <hr>
     <p>{{ post.content }}</p>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
@@ -15,3 +16,27 @@
   </mat-expansion-panel>
 </mat-accordion>
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>
+
+
+<br><br> -->
+
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-card class="example-card" *ngFor="let post of posts">
+  <mat-card-header >
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ post.title }}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image class="post-image" [src]="post.imagePath" [alt]="post.title">
+  <mat-card-content>
+    <p>
+      {{ post.content }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-raised-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+      <button mat-raised-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+  </mat-card-actions>
+</mat-card> 
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>
+
+

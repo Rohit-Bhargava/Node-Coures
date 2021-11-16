@@ -13,9 +13,20 @@ mat-spinner {
 
 .post-image {
   width: 100%;
+  margin: 5px;
 }
 
 .post-image img {
   width: 100%;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+ 
+  box-shadow: 1px 1px 5px rgba(75, 74, 74, 0.5);
 }
+
+.example-card {
+  max-width: 300px;
+}
+
+/* .example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+} */
