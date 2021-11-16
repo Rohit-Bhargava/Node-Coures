@@ -1,6 +1,8 @@
 :host {
   display: block;
   margin-top: 1rem;
+  
+   
 }
 
 mat-spinner {
@@ -12,19 +14,31 @@ mat-spinner {
 }
 
 .post-image {
+  align-items: flex-end;
   width: 100%;
   margin: 5px;
 }
 
-.post-image img {
-  width: 100%;
+/* .post-image img {
+  width: 70px;
  
   box-shadow: 1px 1px 5px rgba(75, 74, 74, 0.5);
-}
+} */
 
 .example-card {
-  max-width: 300px;
+  max-width: 320px;
+  
+  align-items: flex-end;
+  float: left;
+  margin-right: 10px;
 }
+
+/* .example-card {
+  max-width: 335px;
+  float: left;
+  margin-right: 10px;
+ 
+} */
 
 /* .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');

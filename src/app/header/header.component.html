@@ -1,19 +1,31 @@
 <mat-toolbar color="primary">
+  <button mat-icon-button class="manu-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>&nbsp;
+  </button>
+  <span>Recipe App</span>
+ 
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <mat-drawer-content>
+      <mat-nav-list>
+        <button mat-raised-button color="accent"><span routerLink="/">Recipe-List</span></button>
+        <br>
+        <br>
+        <button mat-raised-button color="accent"><span routerLink="/create">New Recipe</span></button>
+      </mat-nav-list>
+    </mat-drawer-content>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+<!-- <mat-toolbar color="primary">
   <button mat-raised-button color="accent"><span routerLink="/">Recipe-List</span></button>&nbsp;
   <button mat-raised-button color="accent"><span routerLink="/create">New Recipe</span></button>
   
    
-</mat-toolbar>
-
-
-<!-- <mat-toolbar color="primary">
-  <span>
-    <a routerLink="/">MyMessages</a>
-  </span>
-  <span class="spacer"></span>
-  <ul>
-    <li>
-      <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
-    </li>
-  </ul>
 </mat-toolbar> -->
+
