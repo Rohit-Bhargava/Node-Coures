@@ -3,16 +3,23 @@
     <mat-icon>menu</mat-icon>&nbsp;
   </button>
   <span>Recipe App</span>
+  
  
 </mat-toolbar>
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer class="example-sidenav" mode="over">
     <mat-drawer-content>
-      <mat-nav-list>
+      <mat-nav-list >
         <button mat-raised-button color="accent"><span routerLink="/">Recipe-List</span></button>
         <br>
         <br>
         <button mat-raised-button color="accent"><span routerLink="/create">New Recipe</span></button>
+        <br>
+        <br>
+        <button mat-raised-button color="accent" class="loginBtn"><span routerLink="/login">Login</span></button>
+        <br>
+        <br>
+        <button mat-raised-button color="accent" class="loginBtn"><span routerLink="/signup">SignUp</span></button>
       </mat-nav-list>
     </mat-drawer-content>
   </mat-drawer>

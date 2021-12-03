@@ -1,0 +1,7 @@
+.signupCard{
+    display:flexbox;
+    text-align: center;
+    margin-left: 385px;
+    margin-top: 75px;
+    width: 70%;
+}

@@ -38,3 +38,9 @@ a {
  /* .spacer {
   flex: 1 1 auto; 
 } */
+
+
+::ng-deep  .mat-drawer-inner-container {
+  height: unset !important;
+};
+
