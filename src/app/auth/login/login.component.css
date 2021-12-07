@@ -1,7 +1,7 @@
-.loginCard{
-    display:flexbox;
-    text-align: center;
-    margin-left: 385px;
-    margin-top: 75px;
-    width: 70%;
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
 }
