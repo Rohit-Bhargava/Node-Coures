@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
 
 import { Post } from "./post.model";
+import { Nodemailer } from "nodemailer";
 
 @Injectable({ providedIn: "root" })
 export class PostsService {

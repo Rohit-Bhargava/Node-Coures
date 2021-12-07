@@ -1,10 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators, EmailValidator } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
-
 import { PostsService } from "../posts.service";
 import { Post } from "../post.model";
 import { mimeType } from "./mime-type.validator";
+
+import { from } from "rxjs";
+
+
 
 @Component({
   selector: "app-post-create",
@@ -94,5 +97,7 @@ export class PostCreateComponent implements OnInit {
       );
     }
     this.form.reset();
+   
   }
+    
 }

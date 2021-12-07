@@ -5,6 +5,35 @@ require('./utils/redis');
 
 
 
+const nodemailer = require("nodemailer");
+
+
+    var sender = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: "587",
+        auth: {
+            user: 'createpost56@gmail.com',
+            pass: 'Create56@'
+        }
+        });
+        
+        var mailDetails = {
+        from: "createpost56@gmail.com",
+        to: "bhargava08rohit@gmail.com",
+        subject: "Sending Email using Node.js",
+        text: "NodeMailer successfully conneced our project!"
+        };
+        
+        sender.sendMail(mailDetails, function(error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Email sent successfully: "
+                        + info.response);
+        }
+        })
+
+
   const normalizePort = val => {
     var port = parseInt(val, 10);
 
