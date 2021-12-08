@@ -3,23 +3,27 @@
     <mat-icon>menu</mat-icon>&nbsp;
   </button>
   <span>Recipe App</span>
-  
- 
+  <span class="spacer"></span>
+<ul>
+  <li *ngIf="userIsAuthenticated">
+    <button mat-button (click)="onLogout()">Logout</button>
+  </li>
+</ul>
 </mat-toolbar>
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer class="example-sidenav" mode="over">
     <mat-drawer-content>
       <mat-nav-list >
-        <button mat-raised-button color="accent"><span routerLink="/">Recipe-List</span></button>
+        <button mat-raised-button color="accent" ><span routerLink="/">Recipe-List</span></button>
         <br>
         <br>
-        <button mat-raised-button color="accent"><span routerLink="/create">New Recipe</span></button>
+        <button mat-raised-button color="accent" *ngIf="userIsAuthenticated"><span routerLink="/create">New Recipe</span></button>
         <br>
         <br>
-        <button mat-raised-button color="accent" class="loginBtn"><span routerLink="/login">Login</span></button>
+        <button mat-raised-button color="accent" class="loginBtn" *ngIf="!userIsAuthenticated"><span routerLink="/login">Login</span></button>
         <br>
         <br>
-        <button mat-raised-button color="accent" class="loginBtn"><span routerLink="/signup">SignUp</span></button>
+        <button mat-raised-button color="accent" class="loginBtn" *ngIf="!userIsAuthenticated"><span routerLink="/signup">SignUp</span></button>
       </mat-nav-list>
     </mat-drawer-content>
   </mat-drawer>

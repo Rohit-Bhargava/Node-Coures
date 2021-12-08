@@ -44,3 +44,7 @@ a {
   height: unset !important;
 };
 
+.spacer {
+  flex: 1 1 auto;
+}
+
