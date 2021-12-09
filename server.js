@@ -1,11 +1,16 @@
 const app = require("./backend/app");
 const debug = require("debug")("node-angular");
 const http = require("http");
+const {SocketIoModule} = require('npx-socket-io');
+
 require('./utils/redis');
 
 
 
 const nodemailer = require("nodemailer");
+const { connect } = require("http2");
+const create = require("core-js/fn/object/create");
+const { createPost } = require("./backend/controllers/posts");
 
 
     var sender = nodemailer.createTransport({
@@ -79,6 +84,32 @@ const nodemailer = require("nodemailer");
   app.set("port", port);
 
   const server = http.createServer(app);
+  const socketIO = require("socket.io")(server, {
+    core: {
+      origin: "http://localhost:4200",
+      methods: ["PUT", "GET", "PATCH", "POST", "DELETE"],
+    }
+  });
+  let socketIOServer = socketIO.listen(server);
   server.on("error", onError);
   server.on("listening", onListening);
   server.listen(port);
+
+  socketIOServer.sockets.on('connect', (socket)=>{
+    console.log('socket connected!')
+  });
+
+  socket.on(createPost, (post)=>{
+    socketIOServer.emit('createPost', post);
+    console.log('Create post socket emitted');
+  });
+
+  socket.on(updatePost, (post)=>{
+    socketIOServer.emit('updatePost', post);
+    console.log('update post socket emitted');
+  });
+
+  socket.on(deletePost, (post)=>{
+    socketIOServer.emit('deletePost', post);
+    console.log('delete post socket emitted');
+  });

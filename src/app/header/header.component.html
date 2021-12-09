@@ -20,6 +20,9 @@
         <br>
         <br>
         <button mat-raised-button color="accent" class="loginBtn"><span routerLink="/signup">SignUp</span></button>
+        <br>
+        <br>
+        <button mat-raised-button color="accent" class="loginBtn" (click)="onLogout()" *ngIf="userIsAuthenticated">Logout</button>
       </mat-nav-list>
     </mat-drawer-content>
   </mat-drawer>
