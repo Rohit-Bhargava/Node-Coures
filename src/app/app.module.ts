@@ -2,7 +2,9 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthInterceptor } from "./auth/auth-interceptor";
+import { PostsModule } from "./posts/post.module";
 
 import {
   MatInputModule,
@@ -31,6 +33,7 @@ import { PostListComponent } from "./posts/post-list/post-list.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -41,6 +44,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     PostListComponent,
     LoginComponent,
     SignupComponent,
+    ErrorComponent,
    
   ],
   imports: [
@@ -49,6 +53,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
+    PostsModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -71,7 +76,9 @@ import { SignupComponent } from './auth/signup/signup.component';
     MatSelectModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
