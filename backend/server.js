@@ -1,16 +1,15 @@
-const app = require("./backend/app");
+const app = require("./app");
+const path = require('path');
 const debug = require("debug")("node-angular");
 const http = require("http");
-const {SocketIoModule} = require('npx-socket-io');
 
-require('./utils/redis');
+require('../utils/redis');
 
 
 
 const nodemailer = require("nodemailer");
-const { connect } = require("http2");
-const create = require("core-js/fn/object/create");
-const { createPost } = require("./backend/controllers/posts");
+
+
 
 
     var sender = nodemailer.createTransport({
@@ -82,34 +81,35 @@ const { createPost } = require("./backend/controllers/posts");
 
   const port = normalizePort(process.env.PORT || "3000");
   app.set("port", port);
-
   const server = http.createServer(app);
-  const socketIO = require("socket.io")(server, {
-    core: {
-      origin: "http://localhost:4200",
-      methods: ["PUT", "GET", "PATCH", "POST", "DELETE"],
-    }
-  });
-  let socketIOServer = socketIO.listen(server);
-  server.on("error", onError);
-  server.on("listening", onListening);
-  server.listen(port);
+const socketIO = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:4200",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    // allowedHeaders: ["my-custom-header"],
+    // credentials: true
+  }});//
+let socketIOServer = socketIO.listen(server); //
+server.on("error", onError);
+server.on("listening", onListening);
+server.listen(port);
 
-  socketIOServer.sockets.on('connect', (socket)=>{
-    console.log('socket connected!')
-  });
+//
+socketIOServer.sockets.on('connection', (socket) => {
+  console.log('Socket connected');
 
-  socket.on(createPost, (post)=>{
+  socket.on('createPost', (post) => {
     socketIOServer.emit('createPost', post);
-    console.log('Create post socket emitted');
+    console.log('Create Post socket emitted');
   });
 
-  socket.on(updatePost, (post)=>{
+  socket.on('updatePost', (post) => {
     socketIOServer.emit('updatePost', post);
-    console.log('update post socket emitted');
+    console.log('Update Post socket emitted');
   });
 
-  socket.on(deletePost, (post)=>{
+  socket.on('deletePost', (post) => {
     socketIOServer.emit('deletePost', post);
-    console.log('delete post socket emitted');
+    console.log('Delete Post socket emitted');
   });
+});//

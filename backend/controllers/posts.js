@@ -1,5 +1,3 @@
-const { error } = require('console');
-const { create } = require('core-js/core/object');
 const Post = require('../models/post');
 const user = require('../models/user');
 

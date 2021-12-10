@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 import { Socket } from "ngx-socket-io";
+import { Observable } from "rxjs";
+import * as io from 'socket.io-client';
 
 import { Post } from './post.model';
 
 @Injectable()
 export class PostSocketService {
+    
     constructor(private socket: Socket) {}
 
     emitCreatePostSocket(post: any) {
