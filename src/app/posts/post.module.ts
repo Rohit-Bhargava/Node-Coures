@@ -9,7 +9,7 @@ import { PostSocketService } from "./post-socket.service";
 
 import { PostCreateComponent } from "./post-create/post-create.component";
 import { PostListComponent } from "./post-list/post-list.component";
-
+import { AngularMaterialModule } from "../angular-material.module";
 import { environment } from "src/environments/environment";
 //////
 const socketIoConfig: SocketIoConfig = {
@@ -23,7 +23,8 @@ const socketIoConfig: SocketIoConfig = {
     SocketIoModule.forRoot(socketIoConfig),
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    AngularMaterialModule
   ],
   providers: [
     PostSocketService

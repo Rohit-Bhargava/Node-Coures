@@ -7,8 +7,7 @@ const extractFile = require("../middleware/file");
 
 const router = express.Router();
 
-router.post( "", checkAuth, extractFile, PostController.createPost
-  // multer({ storage: storage }).single("image"),
+router.post( "", checkAuth, extractFile, PostController.createPost);  // multer({ storage: storage }).single("image"),
   // (req, res, next) => {
   //   const url = req.protocol + "://" + req.get("host");
   //   const post = new Post({
@@ -26,9 +25,9 @@ router.post( "", checkAuth, extractFile, PostController.createPost
   //     });
   //   });
   // }
-);
 
-router.put("/:id", checkAuth, extractFile, PostController.updatePost
+
+router.put("/:id", checkAuth, extractFile, PostController.updatePost);
   // multer({ storage: storage }).single("image"),
   // (req, res, next) => {
   //   let imagePath = req.body.imagePath;
@@ -47,9 +46,9 @@ router.put("/:id", checkAuth, extractFile, PostController.updatePost
   //     res.status(200).json({ message: "Update successful!" });
   //   });
   // }
-);
 
-router.get("", PostController.getPosts
+
+router.get("", PostController.getPosts);
 // (req, res, next) => {
 //   Post.find().then(documents => {
 //     res.status(200).json({
@@ -57,9 +56,8 @@ router.get("", PostController.getPosts
 //       posts: documents
 //     });
 //   });
-);
 
-router.get("/:id", PostController.updatePost
+router.get("/:id", PostController.updatePost);
 //  (req, res, next) => {
 //   Post.findById(req.params.id).then(post => {
 //     if (post) {
@@ -69,15 +67,15 @@ router.get("/:id", PostController.updatePost
 //     }
 //   });
 // }
-);
 
-router.delete("/:id", PostController.deletePost
+
+router.delete("/:id", PostController.deletePost);
 //  (req, res, next) => {
 //   Post.deleteOne({ _id: req.params.id }).then(result => {
 //     console.log(result);
 //     res.status(200).json({ message: "Post deleted!" });
 //   });
 // }
-);
+
 
 module.exports = router;

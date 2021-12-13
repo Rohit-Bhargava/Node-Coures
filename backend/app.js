@@ -9,12 +9,14 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 mongoose
-  .connect("mongodb://localhost:27017/MEAN", {
+  .connect("mongodb://localhost:27017/MEAN",
+   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: true,
-  })
+  }
+  )
   .then(() => {
     console.log("Connected to database!");
   })

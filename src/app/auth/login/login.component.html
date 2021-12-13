@@ -1,31 +1,27 @@
-<form (submit)="onLogin(loginForm)" #loginForm="ngForm">
-    <mat-card class="loginCard">
-        <mat-card-title>
-            Login Form
-        </mat-card-title>
-        <mat-card-subtitle>
-            Please enter valid user name and password
-        </mat-card-subtitle>
+<mat-card class="loginCard">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <mat-card-title>
+        Login Form
+    </mat-card-title>
+    <mat-card-subtitle>
+        Please enter valid user name and password
+    </mat-card-subtitle>
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm" !isLoading>
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Email</mat-label>
-            <input type="email" matInput name="email" ngModel #emailInput="ngModel" required>
+            <input type="email" matInput name="email" ngModel #emailInput="ngModel" required email>
             <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
-          </mat-form-field><br>
-          <mat-form-field class="example-full-width" appearance="outline">
-              <mat-label>Password</mat-label>
-              <input type="password" matInput name="password" ngModel #passwordInput="ngModel" required>
-              <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
-            </mat-form-field>
-            <hr>
-            <div>
-                <button mat-raised-button color="accent" type="submit">LogIn</button>&nbsp;
-                <button mat-raised-button color="accent" type="reset">Cancel</button>
-            </div>
+        </mat-form-field><br>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput name="password" ngModel #passwordInput="ngModel" required>
+            <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+        </mat-form-field>
+    </form>
+    <hr>
+    <div>
+        <button mat-raised-button color="accent" type="submit" *ngIf = "!isLoading">LogIn</button>&nbsp;
+        <button mat-raised-button color="accent" type="reset">Cancel</button>
+    </div>
 
-    </mat-card>
-    
-  </form>
-  
-
-
-
+</mat-card>
