@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
-// import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -15,12 +15,16 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatDialog} from '@angular/material/dialog'
+import {MatDialog} from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { CdkScrollable } from '@angular/cdk/scrolling';
 
 const MaterialComponents = [
   MatButtonModule,
   MatToolbarModule,
-  // MatAutocompleteModule,
+  CommonModule,
+  CdkScrollable,
+  MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
   MatButtonToggleModule,
